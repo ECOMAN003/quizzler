@@ -32,9 +32,9 @@ class _QuizPageState extends State<QuizPage> {
   List<Icon> scoreKeeper = [];
   int questionNumber = 0;
 
-  void isTrue() {
+  void isTrue(bool currentBool) {
     bool currentAnswer = questionBank[questionNumber].a;
-    if (currentAnswer == true) {
+    if (currentAnswer == currentBool) {
       scoreKeeper.add(const Icon(
         Icons.check,
         color: Colors.green,
@@ -49,13 +49,13 @@ class _QuizPageState extends State<QuizPage> {
 
   List<Question> questionBank = [
     Question(q: 'You can lead a cow down stairs but not up stairs.', a: false),
-    Question(q: 'Approximately one quarter of human bones are in the feet.',a: true),
-    Question(q: 'A slug\'s blood is green.',a: true),
-    Question(q: 'Water is White.',a: false),
-    Question(q: 'Violets Are Blue.',a: false),
-    Question(q: 'Raven is Mad',a: true),
-    Question(q: 'Unbanned is gaee',a: true),
-    Question(q: 'Iphone is Better than Android',a: false)
+    Question(q: 'Approximately one quarter of human bones are in the feet.', a: true),
+    Question(q: 'A slug\'s blood is green.', a: true),
+    Question(q: 'Water is White.', a: false),
+    Question(q: 'Violets Are Blue.', a: false),
+    Question(q: 'Raven is Mad', a: true),
+    Question(q: 'Unbanned is gaee', a: true),
+    Question(q: 'Iphone is Better than Android', a: false)
   ];
 
   @override
@@ -95,7 +95,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                isTrue();
+                isTrue(true);
                 setState(() {
                   questionNumber++;
                 });
@@ -118,7 +118,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                isTrue();
+                isTrue(false);
                 setState(() {
                   questionNumber++;
                 });
@@ -127,6 +127,7 @@ class _QuizPageState extends State<QuizPage> {
           ),
         ),
         Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: scoreKeeper,
         ),
       ],
