@@ -10,11 +10,9 @@ class Quizzler extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         backgroundColor: Colors.grey.shade900,
-        body: const SafeArea(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.0),
-            child: QuizPage(),
-          ),
+        body: const Padding(
+          padding: EdgeInsets.symmetric(horizontal: 10.0),
+          child: QuizPage(),
         ),
       ),
     );
@@ -49,7 +47,9 @@ class _QuizPageState extends State<QuizPage> {
 
   List<Question> questionBank = [
     Question(q: 'You can lead a cow down stairs but not up stairs.', a: false),
-    Question(q: 'Approximately one quarter of human bones are in the feet.', a: true),
+    Question(
+        q: 'Approximately one quarter of human bones are in the feet.',
+        a: true),
     Question(q: 'A slug\'s blood is green.', a: true),
     Question(q: 'Water is White.', a: false),
     Question(q: 'Violets Are Blue.', a: false),
@@ -57,6 +57,13 @@ class _QuizPageState extends State<QuizPage> {
     Question(q: 'Unbanned is gaee', a: true),
     Question(q: 'Iphone is Better than Android', a: false)
   ];
+
+  void isFinished() {
+    if (questionBank.length == questionNumber + 1) {
+      questionNumber = 0;
+      
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -126,9 +133,12 @@ class _QuizPageState extends State<QuizPage> {
             ),
           ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: scoreKeeper,
+        Padding(
+          padding: const EdgeInsets.only(bottom:20.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: scoreKeeper,
+          ),
         ),
       ],
     );
