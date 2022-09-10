@@ -3,7 +3,7 @@ class Question {
   //   questionText = questionText;
   //   questionAnswer = questionAnswer;
   // }
-  Question({required String q, required bool a}) {
+  Question( String q,  bool a) {
     this.a = a;
     this.q = q;
   }
