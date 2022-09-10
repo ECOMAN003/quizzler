@@ -35,7 +35,8 @@ class _QuizPageState extends State<QuizPage> {
 
   void isTrue(bool currentBool) {
     bool currentAnswer = quizBrain.getQuestionAnswer();
-    if (currentAnswer == currentBool) {
+    setState(() {
+      if (currentAnswer == currentBool) {
       scoreKeeper.add(const Icon(
         Icons.check,
         color: Colors.green,
@@ -46,8 +47,7 @@ class _QuizPageState extends State<QuizPage> {
         color: Colors.red,
       ));
     }
-    setState(() {
-      quizBrain.nextQuestion();
+    quizBrain.nextQuestion();
     });
   }
 
